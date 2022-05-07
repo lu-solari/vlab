@@ -1,0 +1,552 @@
+*{
+    box-sizing: border-box;
+    color: #00ffff9e;
+    font-family: 'roboto light';
+    font-size: medium;
+    transition: ease-in;
+    transition-duration: 100ms;
+    scrollbar-color: #6969dd #e0e0e0;
+    scrollbar-width: thin;
+}
+ /* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.02);
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); */
+  /* background-color: #d6dee1; */
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+body { 
+    /* background-image: linear-gradient(to bottom right, #04002e, #0033cc82, #ff44b77d, rgba(0, 229, 255, 0.524)); */
+    background:
+    /* linear-gradient(to bottom right, rgb(0, 7, 54), rgba(42, 0, 133, 0.789), rgb(0, 221, 255)), */
+    /* linear-gradient(to top left,rgba(255, 233, 255, 0.585), rgba(255, 135, 253, 0.653),  rgba(42, 0, 133, 0.789)), */
+    linear-gradient(to bottom, #010014, #00002c51),
+    radial-gradient(circle at bottom left,  #ff42fcc1,  #ffa0fd7e, #0008a961, #00002c),
+    linear-gradient(to top left, #00ddffd2, #001891bd, #00002c)
+    ;
+    background-blend-mode: normal;
+    overflow: hidden;
+  }
+  
+.container {
+    display: grid;
+    /*grid-template:filas / columnas*/
+    grid-template: 10vh 80vh 10vh / 1fr;
+    grid-template-areas: "header"
+                        "body"
+                        "footer";
+    grid-gap:0px;
+    height: 100%;
+    margin: 0px;
+}
+
+.header{
+  grid-area: header;
+    display: grid;
+    grid-template: 1fr / 20vw 1fr 20vw 20vw;
+    grid-template-areas: "logo slogan search usuario";
+    align-content:center;
+}
+
+
+.body{
+  grid-area: body;
+  display: grid;
+  grid-template: 1fr / 20vw 1fr 20vw;
+  grid-template-areas: "left contenido right";
+  overflow: hidden;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+.left {
+  grid-area: left;
+  float: left;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: flex-start;
+  gap: 2em;
+}
+
+.menu > * {
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1em;
+}
+
+.contenido{
+  grid-area: contenido;
+  display: flex;
+  flex-direction: column;    
+  /* justify-content: center;*/
+  align-items: center;
+  overflow-y: scroll;
+  padding: 1em 2em;
+}
+
+
+.right {
+  grid-area: right;
+  float: left;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 200;
+}
+
+
+.item {
+    background-color:none;
+    padding: 2em;
+    border-radius: 10px;
+    border-color: aquamarine;
+  }
+  
+  .logo {
+    grid-area: logo;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-items:center;
+    gap: 0.5em;
+  }
+  
+  .slogan {
+    grid-area: slogan;
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    gap: 4em;
+    font-family: 'Montserrat';
+    font-size: 1em;
+    font-weight: 200;
+  }
+
+.search-container{
+  grid-area:search;
+  display: flex;
+  justify-content: flex-end;
+}
+/* 
+.search-box {
+  position: flex;
+  justify-content: flex-end;
+} */
+
+.usuario {
+  grid-area: usuario;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+}
+
+
+.acceder.dropdown {
+  
+} 
+
+.menuUsuario,
+.menuInicial {
+  padding: 1em;
+  
+} 
+.menuUsuario {
+  border-top:  1pt solid #00ffff4e;
+}
+
+.acceder {
+  display: flex;
+  flex-direction: column-reverse;
+  background: rgba(255, 255, 255, 0.05);
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* background-color: #00c8ff11; 
+  border-radius: 3px;*/
+  padding: 1em;
+}
+
+.menuInicial >*,
+.menuUsuario >* 
+{
+  
+  display:block;
+  font-family: 'Roboto Mono', monospace;
+   font-size: 1em;
+   font-weight: 200;
+   text-decoration: none;
+   align-items:center;
+  }
+  
+.logo .vlab {
+    font-family: 'Montserrat' !important;
+    font-weight: 900;
+    font-size: 4vh;
+    white-space: nowrap;
+}
+
+.icono .st0 {
+    fill:none;
+    stroke:#00ffff;
+    stroke-width:2pt;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-miterlimit:10;
+}
+
+
+.login {
+    font-family: 'Roboto Mono', monospace;
+    color: #00ffff;
+}
+
+.login:hover {
+    color: #00ffff;
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+
+
+.dropdown {
+  /* display: flex;
+  flex-direction: column;
+  align-items: middle; */
+  float: left;
+  overflow: hidden;
+  text-decoration: none;
+  vertical-align: bottom;
+  }
+  
+
+
+.dropdown .dropbtn{
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1em;
+  font-weight: 200;
+}
+
+
+
+
+.dropdown-content a {
+  /* position: relative; */
+  float: none;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1em;
+  font-weight: 200;
+  color: #00ffff;
+  padding: 12pt 16pt;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.left a:hover, 
+.dropdown:hover .dropbtn,
+.dropdown-content a:hover {
+color: #00ffff;
+font-weight: 400;
+text-decoration: none;
+}
+  
+.dropdown-content {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: all .5s ease-in-out;
+  /* display: none; */
+
+}
+
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  height: 10em;
+  overflow: hidden;
+  display: block;
+  transition: all .5s ease-in-out;
+
+}
+
+
+.dropbtn:focus ~ .dropdown-content {
+  opacity: 1;
+  display: block;
+  height: 10em;
+  overflow: hidden;
+  transition: all .5s ease-in-out;
+
+}
+
+
+.myForm {
+  /* position: absolute; */
+  vertical-align: top;
+  display: flex;
+  flex-direction: column;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.05);
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* background-color: #00c8ff11; 
+  border-radius: 3px;*/
+  padding: 1em;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.column,
+.cards {
+  display: flex;
+  flex-direction:column;
+  flex-wrap: nowrap;
+  width:100%; /*mq cambiar?*/
+  padding: 1em;
+  gap: 1em;
+}
+
+
+.card {
+  display: flex;
+  flex-direction:column;
+  flex-wrap: nowrap;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1em;
+  list-style: none;
+}
+
+.card > * {
+  margin:0.5em;
+}
+
+.card .title {
+  font-size: 1.5em;
+}
+
+.input-group {
+   display: block;
+}
+.input-group > label {
+  margin-right: 1em; 
+  padding: .5em 0;
+}
+.myForm input,
+.myForm select {
+  flex: 6; 
+  padding: .5em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.myForm button {
+  padding: 1em; 
+  background: transparent;
+  color: white;
+  border:  1pt solid #00ffff4e;
+  align-self: start;
+}
+
+.myForm fieldset input {
+  width: min-content;
+}
+
+.myForm fieldset {
+   border: 0; 
+}
+
+label { 
+  display: block;
+}
+
+input{
+  background-color: transparent;
+  outline: 0;
+  border-width: 0 0 1pt;
+  border-color: #00ffff4e;
+}
+
+input:focus {
+    border-color: #00ffffbc;
+}
+
+select {
+    background-color: transparent;
+    outline: 0;
+    border-width: 0 0 1pt;
+    border-color: #00ffff4e;
+}
+
+button {
+    background-color: transparent;
+    border: 1pt solid #00ffff4e;
+
+}
+
+select:hover, button:hover {
+    color: #00ffff;
+    font-weight: 400;
+    text-decoration: none;
+    background-color:#00c8ff11;
+}
+
+
+
+input::placeholder {
+  color: #00ffff4e;
+}
+
+input:-internal-autofill-selected {
+  appearance: menulist-button;
+  background-image: none !important;
+  background-color: transparent !important;
+  color: inherit;
+  font-weight: 300;
+}
+
+
+
+.search-box{
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+
+.input-search{
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 1em;
+  font-weight: 200;
+  color: #00ffff9e;
+  outline: none;
+  border-radius: 25px;
+  transition: all .5s ease-in-out;
+  /* background-color: #22a6b3; */
+
+  background: rgba(255, 255, 255, 0.05);
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  padding-right: 40px;
+  color:#00ffff;
+}
+
+.input-search::placeholder{
+  font-size: 1em;
+  font-weight: 100;
+}
+
+.btn-search{
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color:#ffffff ;
+  /* background-color:transparent; */
+  pointer-events: painted;  
+  z-index: 2;
+}
+.btn-search:hover ~ .input-search,
+.btn-search:focus ~ .input-search{
+  width: 300px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: transparent;
+  /* border-bottom:1px solid rgba(255,255,255,.5); */
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+.input-search:focus{
+  width: 300px;
+  border-radius: 25px;
+  
+  /* background-color: transparent; */
+
+  background: rgba(255, 255, 255, 0.05);
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+/* 
+  border-bottom:1px solid rgba(255,255,255,.5); */
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+div.estudio {
+  display: flex;
+  flex-flow:nowrap;
+  gap: 0.5em;
+  align-items: center;
+}
+button.add {
+  width:2em;
+  height:2em;
+  border-radius: 50%;
+}
+
+
+h2 {
+  font-size: 2em;
+  padding-left:0.5em;
+  width: 100%;
+  display: inline-block;
+  align-self: left;
+}
